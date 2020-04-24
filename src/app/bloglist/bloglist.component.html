@@ -1,0 +1,4 @@
+<app-blog [post]="bloglists[currentPage][0]"></app-blog>
+<app-blog [post]="bloglists[currentPage][1]"></app-blog>
+<app-blog [post]="bloglists[currentPage][2]"></app-blog>
+<app-paginator [numberOfPages]="bloglists.length" (pageNumberClick)="updateCurrentPage($event)"></app-paginator>
