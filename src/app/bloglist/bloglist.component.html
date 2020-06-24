@@ -1,4 +1,18 @@
-<app-blog [post]="bloglists[currentPage][0]"></app-blog>
-<app-blog [post]="bloglists[currentPage][1]"></app-blog>
-<app-blog [post]="bloglists[currentPage][2]"></app-blog>
+<app-card>
+    <h1>Blog Heading</h1>
+    <app-blog [post]="bloglists[currentPage][0]" #blog></app-blog>
+    
+    <h2>Blog Footer</h2>
+</app-card>
+<app-card>
+    <app-blog [post]="bloglists[currentPage][1]" #blog></app-blog>
+    
+</app-card>
+<app-card>
+    <app-blog [post]="bloglists[currentPage][2]" #blog></app-blog>
+</app-card>
+
+
 <app-paginator [numberOfPages]="bloglists.length" (pageNumberClick)="updateCurrentPage($event)"></app-paginator>
+<a href="#" class="btn btn-primary blog-btn" >Expand All</a>
+

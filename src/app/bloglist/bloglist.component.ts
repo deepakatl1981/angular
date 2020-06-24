@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, QueryList, ViewChildren } from '@angular/core';
 import { Blogpost } from '../blogpost';
+import { BlogComponent } from '../blog/blog.component';
 
 @Component({
   selector: 'app-bloglist',
@@ -10,12 +11,13 @@ export class BloglistComponent implements OnInit {
 
   bloglists : Blogpost[][];
   currentPage : number;
+  @ViewChildren('blog') blogComps : QueryList<BlogComponent>;
   constructor() { }
 
   ngOnInit(): void {
     this.currentPage = 0;
     this.bloglists = [
-      [{title:"Blog Title 1", summary:"Blog Summary 1"},
+      [{title:"Blog Title 1", summary:"Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections"},
       {title:"Blog Title 2", summary:"Blog Summary 2"},
       {title:"Blog Title 3", summary:"Blog Summary 3"},
       {title:"Blog Title41", summary:"Blog Summary 4"},
@@ -32,7 +34,7 @@ export class BloglistComponent implements OnInit {
       {title:"Blog Title 12", summary:"Blog Summary 12"},
 
       ],
-      [{title:"Blog Title 13", summary:"Blog Summary 9"},
+      [{title:"Blog Title 13", summary:"Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections"},
       {title:"Blog Title 14", summary:"Blog Summary 10"},
       {title:"Blog Title 15", summary:"Blog Summary 11"},
       {title:"Blog Title 16", summary:"Blog Summary 12"},
@@ -43,6 +45,7 @@ export class BloglistComponent implements OnInit {
 
   updateCurrentPage(newPage:number){
     this.currentPage = newPage;
+    this.blogComps.forEach(comp => comp.minimise())
   }
 
 }
